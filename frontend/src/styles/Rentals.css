@@ -1,0 +1,74 @@
+.rental {
+  height: 210px;
+
+  border-radius: 5px 5px 5px 5px;
+  display: flex;
+}
+
+.rental:hover {
+  outline: black solid 1px;
+}
+
+.rental img {
+  height: 190px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 280px;
+  border-radius: 25px 25px 15px 25px;
+  font-size: 0.5rem;
+}
+
+.name_price {
+  margin-top: 40px;
+  margin-left: 40px;
+  font-size: 24px;
+  width: 570px;
+}
+
+.rentalDate {
+  font-size: 24px;
+  margin-top: 40px;
+  padding-right: 60px;
+}
+
+.rentalSenderInfo {
+  margin-left: 40px;
+  font-size: 24px;
+  width: 570px;
+}
+
+.userSenderInfo {
+  height: 50px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.userSenderInfo img {
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+}
+
+.userSenderInfo p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.responseApplication {
+  font-size: 24px;
+  margin-top: 35px;
+  padding-right: 60px;
+}
+
+.responseApplication button {
+  width: 50px;
+  height: 50px;
+}
+
+.responseApplication button img {
+  width: 60%;
+  height: 60%;
+  padding: 0px;
+  padding-top: 3px;
+}

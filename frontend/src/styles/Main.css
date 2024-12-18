@@ -1,0 +1,307 @@
+body {
+  background-color: rgb(124, 209, 175);
+  margin: 0px 0px 0px 0px;
+}
+
+.mainLogo {
+  height: 80px;
+  display: flex;
+  background-color: aliceblue;
+}
+
+.mainLogo a {
+  display: inline-flex;
+}
+
+.mainLogo img {
+  margin-left: 90px;
+}
+
+.searchForm {
+  position: relative;
+  width: 650px;
+  margin-left: 200px;
+  margin-top: 23px;
+}
+
+.searchForm input {
+  width: 100%;
+  height: 36px;
+  padding-left: 10px;
+  border: 2px solid rgb(75, 172, 133);
+  border-radius: 10px;
+  outline: none;
+  background: rgb(228, 234, 241);
+  color: #9e9c9c;
+}
+
+.searchForm button {
+  position: absolute;
+  top: 0px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgb(75, 172, 133);
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+.searchForm button:before {
+  content: '\f002';
+  font-size: 1rem;
+  color: #f9f0da;
+}
+
+.userInterface {
+  display: flex;
+  margin-top: 13px;
+  justify-content: left;
+}
+
+.userInterfaceComponent {
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  width: 40px;
+
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userInterfaceComponent img {
+  height: 40px;
+  width: 40px;
+  margin-left: 0px;
+}
+
+.userInterfaceComponent p {
+  margin-top: 0px;
+  text-align: center;
+}
+
+.selectAccountController {
+  position: absolute;
+  top: 70px;
+  right: 100px;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 100px;
+  background-color: #e4e4e4;
+  display: block;
+}
+
+.selectAccountController a {
+  display: block;
+  height: 40px;
+  font-size: 1rem;
+  padding-left: 8px;
+}
+
+.selectAccountController button {
+  font-size: 1rem;
+  background-color: #e4e4e4;
+  margin-left: 13px;
+  margin-bottom: 13px;
+  color: red;
+  border: 0px;
+}
+
+.mainArea {
+  background-color: aliceblue;
+  min-height: 610px;
+  width: 1270px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  display: flex;
+  height: auto;
+  border-radius: 15px;
+}
+
+.filters {
+  background-color: rgb(215, 241, 248);
+  width: 250px;
+  text-align: left;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+
+.selectTypesPremiesElement {
+  margin-top: 20px;
+}
+
+.typesPremies {
+  background-color: rgb(215, 241, 248);
+  font-size: 1rem;
+  border-radius: 15px 0px 0px 0px;
+  margin-top: 15px;
+}
+
+.typesPremies button {
+  background-color: rgb(215, 241, 248);
+  width: 100%;
+  text-align: left;
+  border: 0px;
+  display: block;
+  padding: 0px 10px 0px 15px;
+  font-size: 1rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.typesPremies button:hover {
+  background-color: rgb(243, 252, 255);
+  outline: 1px solid black;
+}
+
+.typesPremies a p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+}
+
+.mainFilters {
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.filterElement p {
+  margin-bottom: 7px;
+  margin-left: 7px;
+}
+
+.inputFilter {
+  display: flex;
+}
+
+.inputFilter input {
+  width: 100px;
+  margin-top: 0px;
+}
+
+.primesController {
+  width: 1020px;
+}
+
+.primiseList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.myRentalInfo {
+  padding-top: 10px;
+  display: flex;
+}
+
+.myRentalInfo p {
+  margin-left: 40px;
+  font-size: 1rem;
+  margin-bottom: 0px;
+}
+
+.primise {
+  width: 300px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.primise:hover {
+  outline: black solid 1px;
+}
+
+.primise img {
+  height: 190px;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 280px;
+  border-radius: 25px 25px 15px 25px;
+}
+
+.primise div {
+  text-align: center;
+  margin-top: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:visited {
+  color: #000000;
+}
+
+.inputFilter input {
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 20px;
+}
+
+.userList {
+  background-color: aliceblue;
+  width: 1070px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  border-radius: 15px;
+  min-height: 490px;
+}
+
+.selectRole label {
+  display: block;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+.announcementForm {
+  text-align: center;
+}
+
+.announcementForm input {
+  width: 600px;
+  height: 24px;
+  background-color: aliceblue;
+  border-color: transparent transparent black transparent;
+}
+
+.announcementForm input:focus {
+  outline: none;
+}
+
+.announcementForm button {
+  height: 30px;
+  width: 100px;
+  background-color: rgb(60, 80, 254);
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
+
+.announcement {
+  height: 100px;
+
+  border-radius: 5px 5px 5px 5px;
+  border: transparent solid 1px;
+  justify-content: center;
+  width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.announcement:hover {
+  border-color: black;
+  background-color: rgb(234, 249, 255);
+}
+
+.announcement p {
+  font-size: 1.5rem;
+  padding-top: 10px;
+  padding-left: 30px;
+}

@@ -1,0 +1,98 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin-arm64"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  ID          Int       @id @default(autoincrement())
+  Login       String    @unique(map: "Login") @db.VarChar(255)
+  Password    String    @db.VarChar(255)
+  Role        Int?      @default(0)
+  Name        String?   @db.VarChar(255)
+  Surname     String?   @db.VarChar(255)
+  PhoneNumber String?   @db.VarChar(255)
+  Photo       Bytes?    @db.LongBlob
+  PremiseRef  Premise[]
+  RentalRef   Rental[]
+
+  @@map("Users")
+}
+
+model TypePremises {
+  ID                          Int                           @id @default(autoincrement())
+  Name                        String                        @unique(map: "Name") @db.VarChar(255)
+  PremiseRef                  Premise[]
+  Characteristic_TypepPemises Characteristic_TypepPemises[]
+
+  @@map("TypePremises")
+}
+
+model Premise {
+  ID                           Int                         @id @default(autoincrement())
+  ID_type                      Int
+  ID_owner                     Int
+  Name                         String                      @db.VarChar(255)
+  Image                        Bytes?                      @db.MediumBlob
+  Price                        Float                       @db.Float
+  Address                      String                      @db.VarChar(255)
+  DescriptionCharacteristicRef DescriptionCharacteristic[]
+  TypePremises                 TypePremises                @relation(fields: [ID_type], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "premise_ibfk_1")
+  Owner                        User                        @relation(fields: [ID_owner], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "premise_ibfk_2")
+  RentalRef                    Rental[]
+
+  @@index([ID_owner], map: "ID_owner")
+  @@index([ID_type], map: "ID_type")
+  @@map("Premise")
+}
+
+model Rental {
+  ID         Int       @id @default(autoincrement())
+  ID_premise Int
+  ID_tenant  Int
+  Status     Int?      @default(0)
+  StartDate  DateTime? @db.DateTime(0)
+  Premise    Premise   @relation(fields: [ID_premise], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "rental_ibfk_1")
+  Tenant     User      @relation(fields: [ID_tenant], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "rental_ibfk_2")
+
+  @@index([ID_premise], map: "ID_premise")
+  @@index([ID_tenant], map: "ID_tenant")
+  @@map("Rental")
+}
+
+model Characteristic {
+  ID                           Int                           @id @default(autoincrement())
+  Name                         String                        @unique(map: "Name") @db.VarChar(255)
+  DescriptionCharacteristicRef DescriptionCharacteristic[]
+  Characteristic_TypepPemises  Characteristic_TypepPemises[]
+
+  @@map("Characteristic")
+}
+
+model DescriptionCharacteristic {
+  ID                Int            @id @default(autoincrement())
+  ID_characteristic Int
+  ID_premise        Int
+  Description       String         @db.Text
+  Characteristic    Characteristic @relation(fields: [ID_characteristic], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "descriptioncharacteristic_ibfk_1")
+  Premise           Premise        @relation(fields: [ID_premise], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "descriptioncharacteristic_ibfk_2")
+
+  @@index([ID_characteristic], map: "ID_characteristic")
+  @@index([ID_premise], map: "ID_premise")
+  @@map("DescriptionCharacteristic")
+}
+
+model Characteristic_TypepPemises {
+  TypePremisesID   Int
+  CharacteristicID Int
+  TypePremises     TypePremises   @relation(fields: [TypePremisesID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "_characteristic_typeppemises_ibfk_1")
+  Characteristic   Characteristic @relation(fields: [CharacteristicID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "_characteristic_typeppemises_ibfk_2")
+
+  @@id([TypePremisesID, CharacteristicID])
+  @@index([CharacteristicID], map: "CharacteristicID")
+  @@map("_Characteristic_TypepPemises")
+}

@@ -1,0 +1,85 @@
+.userParams {
+  background-color: aliceblue;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-radius: 20px 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.avaController {
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+.avaController img {
+  border: 3px solid black;
+  border-radius: 120px;
+  width: 220px;
+  height: 220px;
+}
+
+.avaController input {
+  display: block;
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.login {
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 210px;
+  text-align: center;
+}
+
+.userForm {
+  text-align: center;
+  width: 600px;
+  margin-top: 30px;
+}
+
+.userForm input {
+  width: 400px;
+  height: 30px;
+  margin-top: 60px;
+  background-color: aliceblue;
+  border-color: transparent transparent black transparent;
+  font-size: 1rem;
+}
+
+.userForm button {
+  display: block;
+  margin-top: 30px;
+  margin-left: 100px;
+  background-color: aliceblue;
+  border: 0px;
+  font-size: 1rem;
+  color: blue;
+}
+
+.userForm input:focus {
+  outline: none;
+}
+
+.saveButton {
+  display: block;
+  width: 400px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  background-color: rgb(88, 169, 114);
+  color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.underUserParams {
+  width: 100%;
+}
