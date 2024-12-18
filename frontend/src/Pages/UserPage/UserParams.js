@@ -53,8 +53,12 @@ function UserParams() {
       formData.append('name', name);
       formData.append('surname', surname);
       formData.append('phoneNumber', phoneNumber);
-      formData.append('photo', ava2);
       formData.append('login', login);
+
+      // Добавляем фото только если ava2 не null
+      if (ava2 !== null) {
+        formData.append('photo', ava2);
+      }
 
       await axios.put('https://localhost:3441/user/edit', formData, {
         headers: {

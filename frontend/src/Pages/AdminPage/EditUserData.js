@@ -34,7 +34,6 @@ function EditUserData() {
           }
         );
         const user = response.data;
-        console.log(user.Photo);
         if (user.Photo === 'data:image/png;base64,null') setPhoto(noPhoto);
         else {
           setPhoto(user.Photo);
@@ -82,7 +81,6 @@ function EditUserData() {
       return;
     }
 
-    console.log('ракета');
     try {
       //получить id из url
       const formData = new FormData();
@@ -109,19 +107,12 @@ function EditUserData() {
           break;
       }
 
-      console.log(formData);
-      const response = await axios.put(
-        'https://localhost:3441/user/edit_by_id',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `${accessToken}; ${refreshToken}`,
-          },
-        }
-      );
-
-      console.log(response.data.user);
+      await axios.put('https://localhost:3441/user/edit_by_id', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `${accessToken}; ${refreshToken}`,
+        },
+      });
 
       window.location.href = '/';
     } catch (error) {

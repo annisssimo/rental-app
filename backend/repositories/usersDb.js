@@ -76,21 +76,23 @@ module.exports = {
   },
 
   async editUserByLogin(login, name, surname, phoneNumber) {
-    try {
-      await prisma.user.update({
-        where: { Login: login },
-        data: {
-          Name: name, // Новое значение поля Name
-          Surname: surname,
-          PhoneNumber: phoneNumber,
-          Photo: fs.existsSync(filePath) ? fs.readFileSync(filePath) : null,
-        },
-      });
+    const updateData = {
+      Name: name,
+      Surname: surname,
+      PhoneNumber: phoneNumber,
+    };
 
-      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-    } catch (error) {
-      throw error;
+    // Обновляем фото только если файл существует
+    if (fs.existsSync(filePath)) {
+      updateData.Photo = fs.readFileSync(filePath);
     }
+
+    await prisma.user.update({
+      where: { Login: login },
+      data: updateData,
+    });
+
+    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
   },
 
   async editUserById(id, login, password, role, name, surname, phoneNumber) {
