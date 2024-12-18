@@ -4,6 +4,7 @@ import noPhoto from '../../img/no-photo.png';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+
 const accessToken = localStorage.getItem('accessToken');
 const refreshToken = localStorage.getItem('refreshToken');
 
@@ -186,31 +187,29 @@ function EditPremiseData() {
       formData.append('adress', adress);
       formData.append('price', price);
       formData.append('type', type);
-      formData.append('photo', photo2 || photo); // Используем photo2, если оно есть, иначе photo
+      if (photo2 !== null) {
+        formData.append('photo', photo2);
+      }
 
       formData.append('descriptions', JSON.stringify(descriptions));
 
-      const response = await axios.put(
-        'https://localhost:3441/premise/edit',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `${accessToken}; ${refreshToken}`,
-          },
-        }
-      );
+      await axios.put('https://localhost:3441/premise/edit', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `${accessToken}; ${refreshToken}`,
+        },
+      });
 
       window.location.href = '/';
     } catch (error) {
-      console.error('Ошибка при изменении данных пользователя:', error);
+      console.error('Ошибка при изменении данных помещения:', error);
     }
   };
 
   const activeZiliuyTypePremise = {
     backgroundColor:
-      typePremise === 'Жилые помещения' ? 'rgb(60, 80, 254)' : 'transparent', // изменение цвета фона
-    color: typePremise === 'Жилые помещения' ? 'white' : 'black', // изменение цвета текста
+      typePremise === 'Жилые помещения' ? 'rgb(60, 80, 254)' : 'transparent',
+    color: typePremise === 'Жилые помещения' ? 'white' : 'black',
     border: 'none', // удаление границы
     borderRadius: '8px',
     cursor: 'pointer', // курсор при наведении
@@ -218,11 +217,11 @@ function EditPremiseData() {
 
   const activeSkladTypePremise = {
     backgroundColor:
-      typePremise === 'Склады' ? 'rgb(60, 80, 254)' : 'transparent', // изменение цвета фона
-    color: typePremise === 'Склады' ? 'white' : 'black', // изменение цвета текста
-    border: 'none', // удаление границы
+      typePremise === 'Склады' ? 'rgb(60, 80, 254)' : 'transparent',
+    color: typePremise === 'Склады' ? 'white' : 'black',
+    border: 'none',
     borderRadius: '8px',
-    cursor: 'pointer', // курсор при наведении
+    cursor: 'pointer',
   };
 
   const activeEmptyTypePremise = {
